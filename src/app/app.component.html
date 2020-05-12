@@ -13,15 +13,16 @@
            <div style="padding: 10%">
              <app-multi-select
                [placeholder]="'Select City'"
+               [idField] ="'Id'"
+               [textField] = "'val'"
+               [singleSelection] = true
                [data]="dropdownList"
-               [settings]="dropdownSettings"
                (select)="onItemSelect($event)"
                (selectAll)="onSelectAll($event)"
                (selectedValues)="onSelectedValues($event)" >
              </app-multi-select>
            </div>
         </div>
-
     </div>
   </div>
 </div>

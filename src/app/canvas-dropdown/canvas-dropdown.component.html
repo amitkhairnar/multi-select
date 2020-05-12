@@ -35,7 +35,7 @@
       <li
         class="filter-textbox"
         *ngIf="
-          (_data.length > 0 || _settings.allowRemoteDataSearch) &&
+          (_data.length > 0) &&
           _settings.allowSearchFilter
         "
       >
@@ -51,7 +51,7 @@
       <li
         (click)="toggleSelectAll()"
         *ngIf="
-          (_data.length > 0 || _settings.allowRemoteDataSearch) &&
+          (_data.length > 0 ) &&
           !_settings.singleSelection &&
           _settings.enableCheckAll &&
           _settings.limitSelection === -1
@@ -99,7 +99,7 @@
       </li>
       <li
         class="no-data"
-        *ngIf="_data.length == 0 && !_settings.allowRemoteDataSearch">
+        *ngIf="_data.length == 0">
         <h5>{{ _settings.noDataAvailablePlaceholderText }}</h5>
       </li>
     </ul>

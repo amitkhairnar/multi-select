@@ -17,28 +17,18 @@ export class AppComponent {list : any[];
 
   ngOnInit() {
     this.dropdownList = [
-      { item_id: 1, item_text: 'United States' },
-      { item_id: 2, item_text: 'India' },
-      { item_id: 3, item_text: 'China' },
-      { item_id: 4, item_text: 'Japan' },
-      { item_id: 5, item_text: 'Germany' },
-      { item_id: 6, item_text: 'Australia' },
-      { item_id: 7, item_text: 'United Kingdom' },
-      { item_id: 8, item_text: 'Sweden' },
-      { item_id: 9, item_text: 'Norway' },
-      { item_id: 10, item_text: 'Dubai' }
+      { Id: 1, val: 'United States' },
+      { Id: 2, val: 'India' },
+      { Id: 3, val: 'China' },
+      { Id: 4, val: 'Japan' },
+      { Id: 5, val: 'Germany' },
+      { Id: 6, val: 'Australia' },
+      { Id: 7, val: 'United Kingdom' },
+      { Id: 8, val: 'Sweden' },
+      { Id: 9, val: 'Norway' },
+      { Id: 10,val: 'Dubai' }
     ];
 
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 3,
-      allowSearchFilter: true,
-      searchPlaceholderText: 'Search'
-    };
   }
 
   onItemSelect(item: any) {

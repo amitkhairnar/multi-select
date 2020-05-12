@@ -207,16 +207,3 @@ $disable-background-color: #eceeef;
   color: #c8ced3;
 }
 
-@keyframes borderscale {
-  50% {
-    box-shadow: 0 0 0 2px $base-color;
-  }
-}
-
-.cdk-drag-placeholder {
-  opacity: 0;
-}
-
-.cdk-drag-animating {
-  transition: transform 150ms cubic-bezier(0, 0, 0.2, 1);
-}

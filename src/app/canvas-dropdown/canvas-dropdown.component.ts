@@ -50,7 +50,7 @@ export class CanvasDropdownComponent extends CanvasValueAccessor<String> impleme
     enableCheckAll: true,
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
-    allowSearchFilter: false,
+    allowSearchFilter: true,
     limitSelection: -1,
     clearSearchFilter: true,
     maxHeight: 197,
@@ -60,7 +60,6 @@ export class CanvasDropdownComponent extends CanvasValueAccessor<String> impleme
     closeDropDownOnSelection: false,
     showSelectedItemsAtTop: false,
     defaultOpen: false,
-    allowRemoteDataSearch: false,
   };
 
   constructor() {
@@ -68,6 +67,7 @@ export class CanvasDropdownComponent extends CanvasValueAccessor<String> impleme
   }
 
   ngOnInit(): void {
+    this._settings = Object.assign(this.defaultSettings);
     console.log(this.data);
     if (!this.data) {
       this._data = [];
@@ -99,19 +99,42 @@ export class CanvasDropdownComponent extends CanvasValueAccessor<String> impleme
       this._placeholder = 'Select';
     }
   }
+  @Input()
+  public set idField(value: string) {
+    if (value) {
+      this.defaultSettings.idField = value;
+      this._settings = Object.assign(this.defaultSettings);
+    }
+  }
+
+  @Input()
+  public set textField(value: string) {
+    if (value) {
+      this.defaultSettings.textField = value;
+      this._settings = Object.assign(this.defaultSettings);
+    }
+  }
+
+  @Input()
+  public set singleSelection(value: any) {
+    if (value) {
+      this.defaultSettings.singleSelection = value;
+      this._settings = Object.assign(this.defaultSettings);
+    }
+  }
 
   @Input()
   disabled = false;
 
-  @Input()
-  public set settings(value: IDropdownSettings) {
-    if (value) {
-      console.log(value);
-      this._settings = Object.assign(this.defaultSettings, value);
-    } else {
-      this._settings = Object.assign(this.defaultSettings);
-    }
-  }
+  // @Input()
+  // public set settings(value: IDropdownSettings) {
+  //   if (value) {
+  //     console.log(value);
+  //     this._settings = Object.assign(this.defaultSettings, value);
+  //   } else {
+  //     this._settings = Object.assign(this.defaultSettings);
+  //   }
+  // }
 
   @Output() filterChange = new EventEmitter<any>();
 
@@ -226,7 +249,7 @@ export class CanvasDropdownComponent extends CanvasValueAccessor<String> impleme
 
   isAllItemsSelected(): boolean {
     const itemDisabledCount = this._data.filter(item => item.isDisabled).length;
-    if ((!this.data || this.data.length === 0) && this._settings.allowRemoteDataSearch) {
+    if (!this.data || this.data.length === 0) {
       return false;
     }
     return this._data.length === this.selectedItems.length + itemDisabledCount;
