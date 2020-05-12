@@ -27,7 +27,7 @@ const noop = () => {};
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class CanvasDropdownComponent extends CanvasValueAccessor implements OnInit  {
+export class CanvasDropdownComponent extends CanvasValueAccessor<String> implements OnInit  {
   public _settings: IDropdownSettings;
 
   public _data: Array<ListItem> = [];
